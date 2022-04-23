@@ -1,0 +1,5 @@
+---
+- name: Adiciona a GPG Key oficial da Docker
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  args:
+    warn: no

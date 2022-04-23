@@ -1,0 +1,22 @@
+---
+# tasks file for docker-conf
+- name: Atulizando repositorio
+  import_tasks: atualiza-repositorio.yml
+
+- name: Instalando dependências do docker
+  import_tasks: instala-dependencias-apps.yml
+
+- name: Adicionando GPG-KEY do docker
+  import_tasks: add-gpg-key-docker.yml
+
+- name: Configurando repositório
+  import_tasks: adiciona-repositorio.yml
+
+- name: Atulizando repositorio
+  import_tasks: atualiza-repositorio.yml
+
+- name: Instalando docker
+  import_tasks: instala-docker-engine.yml
+
+- name: Configurando docker-compose
+  import_tasks: instala-docker-compose.yml

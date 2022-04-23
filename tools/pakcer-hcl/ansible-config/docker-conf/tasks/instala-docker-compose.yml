@@ -1,0 +1,15 @@
+---
+- name: Download docker-compose
+  get_url:
+    url: "{{repo_git_docker_compose}}"
+    dest: "/usr/local/bin/docker-compose"
+    mode: '0755'
+
+- name: Adiciona docker-compose ao path do sistema
+  file:
+    src: "/usr/local/bin/docker-compose"
+    dest: "/usr/bin/docker-compose"
+    owner: root
+    group: root
+    mode: "1777"
+    state: link

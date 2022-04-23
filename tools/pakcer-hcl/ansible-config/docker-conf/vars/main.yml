@@ -1,0 +1,4 @@
+---
+# vars file for docker-conf
+code_name_version: "focal"  # Ubuntu 20.04
+repo_git_docker_compose: "https://github.com/docker/compose/releases/download/v2.4.1/docker-compose-linux-x86_64"

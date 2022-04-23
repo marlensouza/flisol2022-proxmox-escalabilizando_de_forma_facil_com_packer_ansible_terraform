@@ -1,0 +1,6 @@
+---
+- name: Configurando instâncias do terraform
+  hosts: all
+  become: yes
+  roles:
+    - role-compose-and-django

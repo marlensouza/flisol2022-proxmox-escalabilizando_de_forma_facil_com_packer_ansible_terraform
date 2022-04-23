@@ -1,0 +1,6 @@
+---
+- name: Configurando template Packer
+  hosts: all
+  become: yes
+  roles:    
+    - docker-conf

@@ -1,0 +1,56 @@
+---
+# tasks file for role-compose-and-django
+# cria diretorio
+- name: Criando "/docker-app/compose-django"
+  file:
+    path: /docker-app/compose-django
+    state: directory
+    mode: '0755'
+
+# Transfere arquivos principais
+- name: Transferindo docker-compose.yml
+  copy:
+    src: files/docker-compose.yml
+    dest: /docker-app/compose-django/docker-compose.yml
+    owner: root
+    group: root
+    mode: '0644'  
+
+# Transfere arquivos principais
+- name: Transferindo Dockerfile
+  copy:
+    src: files/Dockerfile
+    dest: /docker-app/compose-django/Dockerfile
+    owner: root
+    group: root
+    mode: '0644'
+
+# Transfere arquivos principais
+- name: Transferindo requirements.txt
+  copy:
+    src: files/requirements.txt
+    dest: /docker-app/compose-django/requirements.txt
+    owner: root
+    group: root
+    mode: '0644'
+
+# Executa docker
+- name: Build compose django
+  shell:
+    cmd: docker-compose run web django-admin startproject composeexample .
+    chdir: /docker-app/compose-django/
+    
+# Transfere arquivos de confiração da app python
+- name: Transferindo settings.py
+  copy:
+    src: files/settings.py
+    dest: /docker-app/compose-django/composeexample/settings.py
+    owner: root
+    group: root
+    mode: '0644'
+
+# Executa a plicação definitivamente
+- name: Subindo aplicação
+  shell:
+    cmd: docker-compose up -d
+    chdir: /docker-app/compose-django/

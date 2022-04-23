@@ -1,0 +1,11 @@
+---
+- name: apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release

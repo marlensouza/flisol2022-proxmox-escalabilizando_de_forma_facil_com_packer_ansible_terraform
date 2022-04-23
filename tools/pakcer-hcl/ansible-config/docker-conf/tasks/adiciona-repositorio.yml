@@ -1,0 +1,8 @@
+---
+- name: Copia template de repositorio docker.list
+  template:
+    src: "templates/docker.list.j2"
+    dest: "/etc/apt/sources.list.d/docker.list"
+    owner: "root"
+    group: "root"
+    mode: '0644'

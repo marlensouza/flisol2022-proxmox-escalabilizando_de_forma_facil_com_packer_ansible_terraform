@@ -1,0 +1,19 @@
+---
+- name: apt-get install docker-ce docker-ce-cli containerd.io
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+
+- name: Habilitando docker.service para iniciar no boot
+  service:
+    name: "docker.service"
+    enabled: yes
+
+- name: Habilitando containerd.service para iniciar no boot
+  service:
+    name: "containerd.service"
+    enabled: yes
